@@ -176,7 +176,7 @@ const AdventureGame = () => {
           onLoad={handleImageLoad} // Mark as loaded when the image is ready
         />
         {loading && <div>Loading...</div>} {/* Show loading indicator */}
-        <p style={{ fontSize: '2rem' }}>{scene.text}</p> {/* Inline style to enforce text size */}
+        <p style={{ fontSize: '1.5rem' }}>{scene.text}</p> {/* Inline style to enforce text size */}
         {scene.tip && (
           <Alert className="bg-blue-50">
             <Lightbulb className="h-4 w-4" />
