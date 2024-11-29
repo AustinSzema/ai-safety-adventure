@@ -5,6 +5,7 @@ import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Lightbulb } from 'lucide-react';
 
 // List of possible image subfolders for each scene
+// All images generated using ChatGPT and Adobe Express
 const imageFolders = {
   start: 'StartScreen',
   under_45_start: 'Under45Start',
