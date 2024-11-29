@@ -5,7 +5,6 @@ import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Lightbulb } from 'lucide-react';
 
 // List of possible image subfolders for each scene
-// All images generated using ChatGPT and Adobe Express
 const imageFolders = {
   start: 'StartScreen',
   under_45_start: 'Under45Start',
@@ -22,11 +21,22 @@ const imageFolders = {
   ending_redefine: 'EndingRedefine'
 };
 
+// Function to preload images to avoid delays on load
+const preloadImage = (src) => {
+  const img = new Image();
+  img.src = src;
+};
+
 // Function to randomly pick an image from the folder
 const getRandomImage = (folderName) => {
   const imageCount = 4; // Number of images in each subfolder (assuming 4 images per folder)
   const randomIndex = Math.floor(Math.random() * imageCount) + 1; // Random index between 1 and 4
-  return `/images/${folderName}/${randomIndex}.jpeg`; // Image paths are named 1.jpeg, 2.jpeg, 3.jpeg, etc.
+  const imagePath = `/images/${folderName}/${randomIndex}.jpeg`; // Image paths are named 1.jpeg, 2.jpeg, 3.jpeg, etc.
+  
+  // Preload the image to improve loading speed
+  preloadImage(imagePath);
+  
+  return imagePath;
 };
 
 const AdventureGame = () => {
@@ -140,11 +150,15 @@ const AdventureGame = () => {
   };
 
   const Scene = ({ scene }) => {
-    const [sceneImage, setSceneImage] = useState('');
+    const [sceneImage, setSceneImage] = useState('/images/Blank/blank.jpeg'); // Default blank image
+    const [loading, setLoading] = useState(true);
+
+    const handleImageLoad = () => {
+      setLoading(false); // Mark as loaded when the image is ready
+    };
 
     useEffect(() => {
-      setShowScene(false);
-      setTimeout(() => setShowScene(true), 50); // Shorter transition delay for faster scene change
+      setShowScene(true); // Shortened delay for quicker scene transition
 
       // Get random image for the current scene
       const folderName = imageFolders[currentScene];
@@ -155,11 +169,13 @@ const AdventureGame = () => {
     return (
       <div className={`scene-container ${showScene ? 'show' : ''}`} style={{ transition: 'opacity 0.3s ease-in-out' }}>
         <img
-          src={sceneImage || "/images/Blank/blank.png"}  // Corrected path to blank image
+          src={sceneImage}
           alt="Scene illustration"
-          className="w-full h-64 object-cover rounded-md mb-4"
-          style={{ objectFit: 'cover' }} // Ensures the image covers the container without stretching
+          className="w-full h-auto object-contain rounded-md mb-4"
+          style={{ maxHeight: '500px' }}
+          onLoad={handleImageLoad} // Mark as loaded when the image is ready
         />
+        {loading && <div>Loading...</div>} {/* Show loading indicator */}
         <p className="text-lg">{scene.text}</p>
         {scene.tip && (
           <Alert className="bg-blue-50">
@@ -183,17 +199,14 @@ const AdventureGame = () => {
   };
 
   return (
-    <div>
-      <h1 className="text-2xl font-bold text-center">AI-Creative Odyssey</h1>
-      <Card className="mt-4">
-        <CardHeader>
-          <h2 className="text-xl">Current Scene</h2>
-        </CardHeader>
-        <CardContent>
-          <Scene scene={getScene(currentScene)} />
-        </CardContent>
-      </Card>
-    </div>
+    <Card>
+      <CardHeader>
+        <h2 className="text-xl">AI-Creative Odyssey</h2>
+      </CardHeader>
+      <CardContent>
+        <Scene scene={getScene(currentScene)} />
+      </CardContent>
+    </Card>
   );
 };
 
