@@ -11,6 +11,10 @@ module.exports = {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      fontSize: {
+        '2xl': '1.5rem',  // Customize the 2xl size to be larger
+        '3xl': '2rem',    // Example for 3xl
+      },
     },
   },
   plugins: [],

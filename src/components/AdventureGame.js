@@ -152,43 +152,43 @@ const AdventureGame = () => {
   const Scene = ({ scene }) => {
     const [sceneImage, setSceneImage] = useState('/images/Blank/blank.jpeg'); // Default blank image
     const [loading, setLoading] = useState(true);
-
+  
     const handleImageLoad = () => {
       setLoading(false); // Mark as loaded when the image is ready
     };
-
+  
     useEffect(() => {
       setShowScene(true); // Shortened delay for quicker scene transition
-
+  
       // Get random image for the current scene
       const folderName = imageFolders[currentScene];
       const randomImage = getRandomImage(folderName);
       setSceneImage(randomImage);
     }, [currentScene]);
-
+  
     return (
       <div className={`scene-container ${showScene ? 'show' : ''}`} style={{ transition: 'opacity 0.3s ease-in-out' }}>
         <img
           src={sceneImage}
           alt="Scene illustration"
-          className="w-full h-auto object-contain rounded-md mb-4"
+          className="w-full h-auto object-cover rounded-md mb-4"
           style={{ maxHeight: '500px' }}
           onLoad={handleImageLoad} // Mark as loaded when the image is ready
         />
         {loading && <div>Loading...</div>} {/* Show loading indicator */}
-        <p className="text-lg">{scene.text}</p>
+        <p style={{ fontSize: '2rem' }}>{scene.text}</p> {/* Inline style to enforce text size */}
         {scene.tip && (
           <Alert className="bg-blue-50">
             <Lightbulb className="h-4 w-4" />
             <AlertDescription>{scene.tip}</AlertDescription>
           </Alert>
         )}
-        <div className="space-y-2">
+        <div className="flex flex-col items-center space-y-2">
           {scene.choices.map((choice, index) => (
             <Button
               key={index}
               onClick={() => setCurrentScene(choice.nextScene)}
-              className="w-full transition-all duration-200 ease-in-out hover:bg-blue-600"
+              className="w-full sm:w-64 lg:w-80 transition-all duration-200 ease-in-out hover:bg-blue-600 hover:text-white"
             >
               {choice.text}
             </Button>
@@ -197,10 +197,11 @@ const AdventureGame = () => {
       </div>
     );
   };
+  
 
   return (
-    <div>
-      <Card className="mt-4">
+    <div className="adventure-game">
+      <Card className="sm:w-full max-w-xl mx-auto p-6">
         <CardContent>
           <Scene scene={getScene(currentScene)} />
         </CardContent>
