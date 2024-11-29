@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Card, CardHeader, CardContent } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Lightbulb } from 'lucide-react';
@@ -199,14 +199,13 @@ const AdventureGame = () => {
   };
 
   return (
-    <Card>
-      <CardHeader>
-        <h2 className="text-xl">AI-Creative Odyssey</h2>
-      </CardHeader>
-      <CardContent>
-        <Scene scene={getScene(currentScene)} />
-      </CardContent>
-    </Card>
+    <div>
+      <Card className="mt-4">
+        <CardContent>
+          <Scene scene={getScene(currentScene)} />
+        </CardContent>
+      </Card>
+    </div>
   );
 };
 
