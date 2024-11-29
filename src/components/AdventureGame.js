@@ -31,7 +31,7 @@ const preloadImage = (src) => {
 const getRandomImage = (folderName) => {
   const imageCount = 4; // Number of images in each subfolder (assuming 4 images per folder)
   const randomIndex = Math.floor(Math.random() * imageCount) + 1; // Random index between 1 and 4
-  const imagePath = `/images/${folderName}/${randomIndex}.jpeg`; // Image paths are named 1.jpeg, 2.jpeg, 3.jpeg, etc.
+  const imagePath = `images/${folderName}/${randomIndex}.jpeg`; // Image paths are named 1.jpeg, 2.jpeg, 3.jpeg, etc.
   
   // Preload the image to improve loading speed
   preloadImage(imagePath);
@@ -150,7 +150,7 @@ const AdventureGame = () => {
   };
 
   const Scene = ({ scene }) => {
-    const [sceneImage, setSceneImage] = useState('/images/Blank/blank.jpeg'); // Default blank image
+    const [sceneImage, setSceneImage] = useState('images/Blank/blank.jpeg'); // Default blank image
     const [loading, setLoading] = useState(true);
   
     const handleImageLoad = () => {
