@@ -9,7 +9,7 @@
   --highlight: #e9f7f6; /* Light teal for highlights */
   --text-muted: #6b7280; /* Muted text color */
   --button-bg: #00fff2; /* Light teal for button background */
-  --button-hover-bg: #86a5d7; /* Pink hover effect */
+  --button-hover-bg: #275bb0; /* Pink hover effect */
   --button-hover-text: #ffffff; /* White text on hover */
 }
 
@@ -62,11 +62,7 @@ img {
   object-fit: cover;
   border-radius: 0.375rem;
   margin-bottom: 1rem;
-  transition: transform 0.3s ease-in-out;
-}
-
-img:hover {
-  /* transform: scale(1.05); */
+  /* No opacity or scale change on hover */
 }
 
 .alert {
