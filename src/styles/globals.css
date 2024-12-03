@@ -1,24 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 
 :root {
-  --background: #fffb00; /* Bright yellow */
-  --foreground: #ff00ea; /* Bright pink */
-  --button-outline: #00fff2; /* Teal */
-  --highlight: #e9f7f6; /* Light teal for highlights */
+  --background: #1e1e1e; /* Dark background */
+  --foreground: #ffffff; /* White text */
+  --button-outline: #ffffff; /* White button outline */
+  --highlight: #374151; /* Darker highlight */
   --text-muted: #6b7280; /* Muted text color */
   --button-bg: #00fff2; /* Light teal for button background */
   --button-hover-bg: #275bb0; /* Pink hover effect */
-  --button-hover-text: #ffffff; /* White text on hover */
+  --button-hover-text: #ffffff; /* White text on hover */  
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #1e1e1e; /* Dark background */
-    --foreground: #ffffff; /* White text */
-    --button-outline: #ffffff; /* White button outline */
-    --highlight: #374151; /* Darker highlight */
-  }
-}
 
 body {
   background: linear-gradient(135deg, #fffb00, #ff00ea);
