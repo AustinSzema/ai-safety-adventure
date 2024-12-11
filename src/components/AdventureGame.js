@@ -8,17 +8,27 @@ import { Lightbulb } from 'lucide-react';
 const imageFolders = {
   start: 'StartScreen',
   under_45_start: 'Under45Start',
-  under_45_embrace: 'Under45Embrace',
-  under_45_sparingly: 'Under45Sparingly',
-  under_45_reject: 'Under45Reject',
+  under_45_ai_dominance: 'Under45AIDominance',
+  under_45_advocacy: 'Under45Advocacy',
+  under_45_transparency: 'Under45Transparency',
+  under_45_authorship: 'Under45Authorship',
+  under_45_authenticity: 'Under45Authenticity',
+  under_45_tradition: 'Under45Tradition',
+  under_45_horizons: 'Under45Horizons',
   over_45_start: 'Over45Start',
-  over_45_celebrate: 'Over45Celebrate',
-  over_45_criticize: 'Over45Criticize',
-  over_45_explore: 'Over45Explore',
-  final_exhibit: 'FinalExhibit',
-  ending_blend: 'EndingBlend',
-  ending_preserve: 'EndingPreserve',
-  ending_redefine: 'EndingRedefine'
+  over_45_hybrid: 'Over45Hybrid',
+  over_45_protest: 'Over45Protest',
+  over_45_digital: 'Over45Digital',
+  over_45_dialogue: 'Over45Dialogue',
+  over_45_balance: 'Over45Balance',
+  over_45_renaissance: 'Over45Renaissance',
+  over_45_forum: 'Over45Forum',
+  over_45_global: 'Over45Global',
+  over_45_unity: 'Over45Unity',
+  final_exhibition: 'FinalExhibit',
+  ending_intent: 'EndingIntent',
+  ending_emotion: 'EndingEmotion',
+  ending_evolution: 'EndingEvolution'
 };
 
 // Function to preload images to avoid delays on load
@@ -43,111 +53,135 @@ const AdventureGame = () => {
   const [currentScene, setCurrentScene] = useState('start');
   const [showScene, setShowScene] = useState(false);
 
-  // Define the scenes and their choices
+  // Comprehensive game script reflecting the detailed narrative
   const scenes = {
     start: {
-      text: "Welcome to the AI-Creative Odyssey! AI is transforming the world of art and creativity. Let's explore this shifting landscape. What's your age range?",
+      text: "Welcome to The AI Canvas: A Creative Odyssey! Navigate a world where AI reshapes creativity, and every choice you make impacts your artistic journey. Relationships, reputations, and ethical dilemmas evolve, culminating in a collaborative, visual finale reflecting your decisions.\n\nChoose Your Character:",
       choices: [
-        { text: "Under 45", nextScene: 'under_45_start' },
-        { text: "Over 45", nextScene: 'over_45_start' }
+        { text: "Under 45: A young artist navigating an AI-driven world, balancing ambition and authenticity.", nextScene: 'under_45_start' },
+        { text: "Over 45: An established creator grappling with AI's impact on tradition and artistic integrity.", nextScene: 'over_45_start' }
       ]
     },
+
+    // Under 45 Path
     under_45_start: {
-      text: "You are under 45, a generation raised with AI technology. How do you feel about AI and creativity?",
+      text: "You're invited to compete in an art contest where most participants use AI. How will you approach this challenge?",
       choices: [
-        { text: "Embrace AI as a tool", nextScene: 'under_45_embrace' },
-        { text: "Use AI sparingly", nextScene: 'under_45_sparingly' },
-        { text: "Reject AI entirely", nextScene: 'under_45_reject' }
+        { text: "Fully integrate AI to maximize your edge.", nextScene: 'under_45_ai_dominance' },
+        { text: "Use AI sparingly for subtle enhancements.", nextScene: 'under_45_authorship' },
+        { text: "Avoid AI entirely, creating a fully human-made piece.", nextScene: 'under_45_tradition' }
       ]
     },
-    under_45_embrace: {
-      text: "You fully embrace AI as a tool to enhance your creativity. You see it as a way to push the boundaries of what art can be.",
+
+    under_45_ai_dominance: {
+      text: "Your piece wins but sparks a public backlash about AI dominance in the arts. A famous critic questions your work's authenticity, claiming AI overshadows your talent. How do you respond?",
       choices: [
-        { text: "Explore new AI-driven techniques", nextScene: 'final_exhibit' },
-        { text: "Collaborate with AI on an art project", nextScene: 'final_exhibit' }
+        { text: "Defend AI as an innovative tool that enhances human creativity.", nextScene: 'under_45_advocacy' },
+        { text: "Acknowledge AI's role and commit to clearer labeling of your process.", nextScene: 'under_45_transparency' }
       ]
     },
-    under_45_sparingly: {
-      text: "You are cautious with AI, using it only when necessary. You believe in maintaining the human touch in your art.",
+
+    under_45_advocacy: {
+      text: "Your public defense garners tech-world support but alienates traditionalists. How will you navigate this divide?",
       choices: [
-        { text: "Use AI for minor enhancements", nextScene: 'final_exhibit' },
-        { text: "Focus on traditional art forms", nextScene: 'final_exhibit' }
+        { text: "Continue pushing technological boundaries.", nextScene: 'final_exhibition' },
+        { text: "Seek a compromise between innovation and tradition.", nextScene: 'final_exhibition' }
       ]
     },
-    under_45_reject: {
-      text: "You completely reject the use of AI in creativity, believing it undermines the authenticity of art.",
+
+    under_45_transparency: {
+      text: "Your transparency builds trust but limits your market appeal. What's your next move?",
       choices: [
-        { text: "Continue creating art the traditional way", nextScene: 'final_exhibit' },
-        { text: "Advocate against AI art", nextScene: 'final_exhibit' }
+        { text: "Double down on ethical AI use.", nextScene: 'final_exhibition' },
+        { text: "Explore alternative creative approaches.", nextScene: 'final_exhibition' }
       ]
     },
+
+    under_45_authorship: {
+      text: "Your balanced piece earns moderate praise but doesn't stand out. Critics suggest your piece lacks cohesion. What's your next step?",
+      choices: [
+        { text: "Double down on refining human-AI collaboration.", nextScene: 'final_exhibition' },
+        { text: "Pivot to fully human-made art to simplify your approach.", nextScene: 'under_45_authenticity' }
+      ]
+    },
+
+    under_45_tradition: {
+      text: "Your piece gains niche acclaim but fails to impress mainstream judges. A gallery invites you to showcase your work as part of a 'no-tech' exhibit. How do you proceed?",
+      choices: [
+        { text: "Accept, becoming a leader in the anti-AI art movement.", nextScene: 'under_45_horizons' },
+        { text: "Decline, pursuing broader audiences outside the traditionalist circle.", nextScene: 'final_exhibition' }
+      ]
+    },
+
+    // Over 45 Path
     over_45_start: {
-      text: "You are over 45, with a more traditional view of art. What are your thoughts on AI in the creative process?",
+      text: "Your town replaces a traditional muralist with an AI-generated public art project. What do you do?",
       choices: [
-        { text: "Celebrate AI as a creative tool", nextScene: 'over_45_celebrate' },
-        { text: "Criticize AI's impact on art", nextScene: 'over_45_criticize' },
-        { text: "Explore AI cautiously", nextScene: 'over_45_explore' }
+        { text: "Advocate for integrating AI and human art.", nextScene: 'over_45_hybrid' },
+        { text: "Protest, calling for traditional art methods.", nextScene: 'over_45_protest' },
+        { text: "Suggest a separate digital exhibit for AI-generated art.", nextScene: 'over_45_digital' }
       ]
     },
-    over_45_celebrate: {
-      text: "You embrace AI as a tool for creativity, excited about how it can expand artistic possibilities.",
+
+    over_45_hybrid: {
+      text: "The hybrid mural becomes a community centerpiece but is criticized for lacking emotion. What's your next move?",
       choices: [
-        { text: "Create with AI-driven techniques", nextScene: 'final_exhibit' },
-        { text: "Teach others about AI art", nextScene: 'final_exhibit' }
+        { text: "Defend the project as a symbol of inclusivity.", nextScene: 'over_45_dialogue' },
+        { text: "Propose a follow-up project highlighting traditional techniques.", nextScene: 'over_45_balance' }
       ]
     },
-    over_45_criticize: {
-      text: "You feel that AI is taking away the soul of art, and you voice concerns about its role in creative fields.",
+
+    over_45_protest: {
+      text: "Traditional artists reclaim the project, but tech advocates criticize the decision. How do you respond?",
       choices: [
-        { text: "Create art that challenges AI", nextScene: 'final_exhibit' },
-        { text: "Speak out against AI in art", nextScene: 'final_exhibit' }
+        { text: "Support the return to tradition, doubling down on local art practices.", nextScene: 'over_45_renaissance' },
+        { text: "Host a community forum to mediate tensions.", nextScene: 'over_45_forum' }
       ]
     },
-    over_45_explore: {
-      text: "You cautiously explore AI, wanting to understand its potential and limitations in the creative world.",
+
+    over_45_digital: {
+      text: "The digital mural garners attention online but faces criticism for lacking cultural relevance. What's your approach?",
       choices: [
-        { text: "Experiment with AI-assisted art", nextScene: 'final_exhibit' },
-        { text: "Stay grounded in traditional methods", nextScene: 'final_exhibit' }
+        { text: "Defend the project, focusing on its innovation.", nextScene: 'over_45_global' },
+        { text: "Advocate for blending digital and traditional art in future projects.", nextScene: 'over_45_unity' }
       ]
     },
-    final_exhibit: {
-      text: "Welcome to the final exhibit. This is the culmination of your journey into AI and creativity. You've chosen your path—now, it's time to reflect.",
+
+    // Final Exhibition
+    final_exhibition: {
+      text: "Both paths converge at an international festival where AI-driven, hybrid, and traditional art are celebrated. What defines creativity in an AI-driven world?",
       choices: [
-        { text: "Blend traditional and AI art", nextScene: 'ending_blend' },
-        { text: "Preserve traditional techniques", nextScene: 'ending_preserve' },
-        { text: "Redefine creativity with AI", nextScene: 'ending_redefine' }
+        { text: "Creativity is about the creator's intent and perspective.", nextScene: 'ending_intent' },
+        { text: "Creativity lies in its emotional resonance, regardless of origin.", nextScene: 'ending_emotion' },
+        { text: "Creativity is evolving beyond human boundaries.", nextScene: 'ending_evolution' }
       ]
     },
-    ending_blend: {
-      text: "You have successfully blended traditional art with AI, creating unique and groundbreaking works.",
-      choices: [
-        { text: "Restart", nextScene: 'start' }
-      ]
+
+    // Endings
+    ending_intent: {
+      text: "Your exhibit emphasizes the importance of the artist's intent, sparking debates on authorship and meaning in the AI era. The world watches as you champion artistic vision.",
+      choices: [{ text: "Restart Game", nextScene: 'start' }]
     },
-    ending_preserve: {
-      text: "You have chosen to preserve traditional art forms, creating masterpieces that showcase the power of human creativity.",
-      choices: [
-        { text: "Restart", nextScene: 'start' }
-      ]
+
+    ending_emotion: {
+      text: "Your raw, emotive pieces move audiences, reminding the world that creativity's heart lies in human emotion. Critics hail your work as a timeless testament to authenticity.",
+      choices: [{ text: "Restart Game", nextScene: 'start' }]
     },
-    ending_redefine: {
-      text: "You have redefined the boundaries of creativity, using AI to push the limits of what art can be.",
-      choices: [
-        { text: "Restart", nextScene: 'start' }
-      ]
+
+    ending_evolution: {
+      text: "Your futuristic, adaptive installations challenge perceptions, pushing the boundaries of creativity. You leave a legacy of innovation and redefined art.",
+      choices: [{ text: "Restart Game", nextScene: 'start' }]
     }
   };
 
-  // Merge the default scenes with the original scenes
-  const allScenes = { ...scenes };
-
   // Check if the scene exists, if not show an error message
   const getScene = (sceneName) => {
-    return allScenes[sceneName] || { 
+    return scenes[sceneName] || { 
       text: "Oops! Something went wrong. Please restart the game.",
       choices: [{ text: "Restart", nextScene: 'start' }]
     };
   };
+  
 
   const Scene = ({ scene }) => {
     const [sceneImage, setSceneImage] = useState('images/Blank/blank.jpeg'); // Default blank image
@@ -197,7 +231,6 @@ const AdventureGame = () => {
       </div>
     );
   };
-  
 
   return (
     <div className="adventure-game">
