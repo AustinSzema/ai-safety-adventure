@@ -1,5 +1,6 @@
-## DISCLAIMER
 --- ---
+## DISCLAIMER
+
 This project was created for my Advanced Writing in Arts, Media, and Design class in partnership with https://www.jointfamily.us/home
 
 The assignment was to create a choose your own adventure game about safety concerns regarding AI. We were instructed to use Claude AI for code generation.
