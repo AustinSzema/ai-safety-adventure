@@ -4,48 +4,53 @@ import { Button } from '@/components/ui/button';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Lightbulb } from 'lucide-react';
 
-// List of possible image subfolders for each scene
+// List of all possible image subfolders for each scene
 const imageFolders = {
   start: 'StartScreen',
   under_45_start: 'Under45Start',
-  under_45_ai_dominance: 'Under45AIDominance',
-  under_45_advocacy: 'Under45Advocacy',
-  under_45_transparency: 'Under45Transparency',
-  under_45_authorship: 'Under45Authorship',
-  under_45_authenticity: 'Under45Authenticity',
-  under_45_tradition: 'Under45Tradition',
-  under_45_horizons: 'Under45Horizons',
   over_45_start: 'Over45Start',
-  over_45_hybrid: 'Over45Hybrid',
-  over_45_protest: 'Over45Protest',
-  over_45_digital: 'Over45Digital',
-  over_45_dialogue: 'Over45Dialogue',
-  over_45_balance: 'Over45Balance',
-  over_45_renaissance: 'Over45Renaissance',
-  over_45_forum: 'Over45Forum',
-  over_45_global: 'Over45Global',
-  over_45_unity: 'Over45Unity',
-  final_exhibition: 'FinalExhibit',
-  ending_intent: 'EndingIntent',
-  ending_emotion: 'EndingEmotion',
-  ending_evolution: 'EndingEvolution'
+  scenario_2a: 'Scenario2A',
+  scenario_2b: 'Scenario2B',
+  scenario_2c: 'Scenario2C',
+  scenario_3a: 'Scenario3A',
+  scenario_3b: 'Scenario3B',
+  scenario_3c: 'Scenario3C',
+  scenario_3d: 'Scenario3D',
+  scenario_3e: 'Scenario3E',
+  scenario_3f: 'Scenario3F',
+  over_45_2a: 'Over452A',
+  over_45_2b: 'Over452B',
+  over_45_2c: 'Over452C',
+  over_45_3a: 'Over453A',
+  over_45_3b: 'Over453B',
+  over_45_3c: 'Over453C',
+  over_45_3d: 'Over453D',
+  over_45_3e: 'Over453E',
+  over_45_3f: 'Over453F',
+  final_4a: 'Final4A',
+  final_4b: 'Final4B',
+  final_4c: 'Final4C',
+  final_4d: 'Final4D',
+  final_4e: 'Final4E',
+  final_4f: 'Final4F',
+  final_4g: 'Final4G',
+  final_4h: 'Final4H',
+  final_4i: 'Final4I',
+  final_4j: 'Final4J',
+  final_4k: 'Final4K',
+  final_4l: 'Final4L'
 };
 
-// Function to preload images to avoid delays on load
 const preloadImage = (src) => {
   const img = new Image();
   img.src = src;
 };
 
-// Function to randomly pick an image from the folder
 const getRandomImage = (folderName) => {
-  const imageCount = 4; // Number of images in each subfolder (assuming 4 images per folder)
-  const randomIndex = Math.floor(Math.random() * imageCount) + 1; // Random index between 1 and 4
-  const imagePath = `images/${folderName}/${randomIndex}.jpeg`; // Image paths are named 1.jpeg, 2.jpeg, 3.jpeg, etc.
-  
-  // Preload the image to improve loading speed
+  const imageCount = 4;
+  const randomIndex = Math.floor(Math.random() * imageCount) + 1;
+  const imagePath = `images/${folderName}/${randomIndex}.jpeg`;
   preloadImage(imagePath);
-  
   return imagePath;
 };
 
@@ -53,135 +58,221 @@ const AdventureGame = () => {
   const [currentScene, setCurrentScene] = useState('start');
   const [showScene, setShowScene] = useState(false);
 
-  // Comprehensive game script reflecting the detailed narrative
+  // Complete scenes object with all scenarios
   const scenes = {
     start: {
-      text: "Welcome to The AI Canvas: A Creative Odyssey! Navigate a world where AI reshapes creativity, and every choice you make impacts your artistic journey. Relationships, reputations, and ethical dilemmas evolve, culminating in a collaborative, visual finale reflecting your decisions.\n\nChoose Your Character:",
+      text: "Welcome to The AI Canvas: A Creative Odyssey! Navigate a world where AI reshapes creativity, and every choice you make impacts your artistic journey. What's your age range?",
       choices: [
-        { text: "Under 45: A young artist navigating an AI-driven world, balancing ambition and authenticity.", nextScene: 'under_45_start' },
-        { text: "Over 45: An established creator grappling with AI's impact on tradition and artistic integrity.", nextScene: 'over_45_start' }
+        { text: "Under 45", nextScene: 'under_45_start' },
+        { text: "Over 45", nextScene: 'over_45_start' }
       ]
     },
-
     // Under 45 Path
     under_45_start: {
-      text: "You're invited to compete in an art contest where most participants use AI. How will you approach this challenge?",
+      text: "You're mid-scroll on your favorite art-sharing app when a pop-up grabs your attention: 'AI Art Revolution: Compete in the Ultimate Hybrid Creativity Contest!' The prize could fund your dream studio. How do you approach this opportunity?",
       choices: [
-        { text: "Fully integrate AI to maximize your edge.", nextScene: 'under_45_ai_dominance' },
-        { text: "Use AI sparingly for subtle enhancements.", nextScene: 'under_45_authorship' },
-        { text: "Avoid AI entirely, creating a fully human-made piece.", nextScene: 'under_45_tradition' }
+        { text: "Fully integrate AI to maximize your edge", nextScene: 'scenario_2a' },
+        { text: "Use AI sparingly for subtle enhancements", nextScene: 'scenario_2b' },
+        { text: "Avoid AI entirely, create a fully human-made piece", nextScene: 'scenario_2c' }
       ]
     },
-
-    under_45_ai_dominance: {
-      text: "Your piece wins but sparks a public backlash about AI dominance in the arts. A famous critic questions your work's authenticity, claiming AI overshadows your talent. How do you respond?",
+    scenario_2a: {
+      text: "Following your victory, a famous critic questions your work's authenticity, claiming AI overshadows your talent. How do you respond?",
       choices: [
-        { text: "Defend AI as an innovative tool that enhances human creativity.", nextScene: 'under_45_advocacy' },
-        { text: "Acknowledge AI's role and commit to clearer labeling of your process.", nextScene: 'under_45_transparency' }
+        { text: "Defend AI as an innovative tool", nextScene: 'scenario_3a' },
+        { text: "Acknowledge AI's role and commit to transparency", nextScene: 'scenario_3b' }
       ]
     },
-
-    under_45_advocacy: {
-      text: "Your public defense garners tech-world support but alienates traditionalists. How will you navigate this divide?",
+    scenario_2b: {
+      text: "Critics suggest your piece lacks cohesion because AI and human elements feel disconnected. What's your next move?",
       choices: [
-        { text: "Continue pushing technological boundaries.", nextScene: 'final_exhibition' },
-        { text: "Seek a compromise between innovation and tradition.", nextScene: 'final_exhibition' }
+        { text: "Double down on refining human-AI collaboration", nextScene: 'scenario_3c' },
+        { text: "Pivot to fully human-made art", nextScene: 'scenario_3d' }
       ]
     },
-
-    under_45_transparency: {
-      text: "Your transparency builds trust but limits your market appeal. What's your next move?",
+    scenario_2c: {
+      text: "A gallery invites you to showcase your human-made work as part of a 'no-tech' exhibit. What do you decide?",
       choices: [
-        { text: "Double down on ethical AI use.", nextScene: 'final_exhibition' },
-        { text: "Explore alternative creative approaches.", nextScene: 'final_exhibition' }
+        { text: "Accept, become a leader in anti-AI art", nextScene: 'scenario_3e' },
+        { text: "Decline, pursue broader audiences", nextScene: 'scenario_3f' }
       ]
     },
-
-    under_45_authorship: {
-      text: "Your balanced piece earns moderate praise but doesn't stand out. Critics suggest your piece lacks cohesion. What's your next step?",
+    scenario_3a: {
+      text: "Your public defense of AI sparks a protest during one of your events. How do you handle this situation?",
       choices: [
-        { text: "Double down on refining human-AI collaboration.", nextScene: 'final_exhibition' },
-        { text: "Pivot to fully human-made art to simplify your approach.", nextScene: 'under_45_authenticity' }
+        { text: "Confront the critics directly", nextScene: 'final_4a' },
+        { text: "Invite a traditionalist to collaborate", nextScene: 'final_4b' }
       ]
     },
-
-    under_45_tradition: {
-      text: "Your piece gains niche acclaim but fails to impress mainstream judges. A gallery invites you to showcase your work as part of a 'no-tech' exhibit. How do you proceed?",
+    scenario_3b: {
+      text: "Your transparency about AI's role wins back trust, but sales remain low. A gallery offers to feature your pieces in a special exhibit on ethical AI use.",
       choices: [
-        { text: "Accept, becoming a leader in the anti-AI art movement.", nextScene: 'under_45_horizons' },
-        { text: "Decline, pursuing broader audiences outside the traditionalist circle.", nextScene: 'final_exhibition' }
+        { text: "Accept and position yourself as an ethical AI artist", nextScene: 'final_4c' },
+        { text: "Decline and create a bold human-crafted series", nextScene: 'final_4d' }
       ]
     },
-
+    scenario_3c: {
+      text: "Your latest piece pushes boundaries between AI and human creativity. An influential artist calls it 'more machine than human.'",
+      choices: [
+        { text: "Engage in public dialogue about authorship", nextScene: 'final_4e' },
+        { text: "Let your art speak for itself", nextScene: 'final_4f' }
+      ]
+    },
+    scenario_3d: {
+      text: "Your human-made art resonates deeply, but tech-driven competitions exclude your work. A critic suggests you're 'outdated.'",
+      choices: [
+        { text: "Double down on human-made ethos", nextScene: 'final_4g' },
+        { text: "Explore subtle AI integrations", nextScene: 'final_4h' }
+      ]
+    },
+    scenario_3e: {
+      text: "Your leadership in anti-AI movement earns you a chance to curate 'The Art of Human Hands' museum exhibit.",
+      choices: [
+        { text: "Accept and showcase pure human creativity", nextScene: 'final_4i' },
+        { text: "Decline to explore new traditional methods", nextScene: 'final_4j' }
+      ]
+    },
+    scenario_3f: {
+      text: "You experiment with unconventional methods to attract a wider audience. How do you proceed?",
+      choices: [
+        { text: "Host an interactive mixed-media workshop", nextScene: 'final_4k' },
+        { text: "Create a collaborative piece across disciplines", nextScene: 'final_4l' }
+      ]
+    },
     // Over 45 Path
     over_45_start: {
-      text: "Your town replaces a traditional muralist with an AI-generated public art project. What do you do?",
+      text: "You discover that the town council has partnered with a tech company to showcase an AI-generated mural as a symbol of 'progress and innovation.' The traditional muralist is notably absent. How do you respond?",
       choices: [
-        { text: "Advocate for integrating AI and human art.", nextScene: 'over_45_hybrid' },
-        { text: "Protest, calling for traditional art methods.", nextScene: 'over_45_protest' },
-        { text: "Suggest a separate digital exhibit for AI-generated art.", nextScene: 'over_45_digital' }
+        { text: "Advocate for integrating AI and human art", nextScene: 'over_45_2a' },
+        { text: "Protest, calling for traditional methods", nextScene: 'over_45_2b' },
+        { text: "Suggest a separate digital exhibit", nextScene: 'over_45_2c' }
       ]
     },
-
-    over_45_hybrid: {
-      text: "The hybrid mural becomes a community centerpiece but is criticized for lacking emotion. What's your next move?",
+    over_45_2a: {
+      text: "The hybrid mural becomes a community centerpiece but faces criticism for lacking emotion. What's your next step?",
       choices: [
-        { text: "Defend the project as a symbol of inclusivity.", nextScene: 'over_45_dialogue' },
-        { text: "Propose a follow-up project highlighting traditional techniques.", nextScene: 'over_45_balance' }
+        { text: "Defend the project as inclusive", nextScene: 'over_45_3a' },
+        { text: "Propose a traditional follow-up project", nextScene: 'over_45_3b' }
       ]
     },
-
-    over_45_protest: {
-      text: "Traditional artists reclaim the project, but tech advocates criticize the decision. How do you respond?",
+    over_45_2b: {
+      text: "Traditional artists reclaim the project, but tech advocates criticize the decision. How do you proceed?",
       choices: [
-        { text: "Support the return to tradition, doubling down on local art practices.", nextScene: 'over_45_renaissance' },
-        { text: "Host a community forum to mediate tensions.", nextScene: 'over_45_forum' }
+        { text: "Support return to tradition", nextScene: 'over_45_3c' },
+        { text: "Host a community forum", nextScene: 'over_45_3d' }
       ]
     },
-
-    over_45_digital: {
-      text: "The digital mural garners attention online but faces criticism for lacking cultural relevance. What's your approach?",
+    over_45_2c: {
+      text: "The digital mural gains attention online but faces criticism for lacking cultural relevance. What do you do?",
       choices: [
-        { text: "Defend the project, focusing on its innovation.", nextScene: 'over_45_global' },
-        { text: "Advocate for blending digital and traditional art in future projects.", nextScene: 'over_45_unity' }
+        { text: "Focus on innovation", nextScene: 'over_45_3e' },
+        { text: "Blend digital and traditional art", nextScene: 'over_45_3f' }
       ]
     },
-
-    // Final Exhibition
-    final_exhibition: {
-      text: "Both paths converge at an international festival where AI-driven, hybrid, and traditional art are celebrated. What defines creativity in an AI-driven world?",
+    over_45_3a: {
+      text: "Your defense sparks broader conversation. The community requests workshops and town halls about public art's future.",
       choices: [
-        { text: "Creativity is about the creator's intent and perspective.", nextScene: 'ending_intent' },
-        { text: "Creativity lies in its emotional resonance, regardless of origin.", nextScene: 'ending_emotion' },
-        { text: "Creativity is evolving beyond human boundaries.", nextScene: 'ending_evolution' }
+        { text: "Host inclusive design workshops", nextScene: 'final_4a' },
+        { text: "Curate an art evolution exhibit", nextScene: 'final_4b' }
       ]
     },
-
-    // Endings
-    ending_intent: {
-      text: "Your exhibit emphasizes the importance of the artist's intent, sparking debates on authorship and meaning in the AI era. The world watches as you champion artistic vision.",
-      choices: [{ text: "Restart Game", nextScene: 'start' }]
+    over_45_3b: {
+      text: "Your traditional project proposal gains support, but resources are limited. Which approach do you choose?",
+      choices: [
+        { text: "Lead a hands-on community project", nextScene: 'final_4c' },
+        { text: "Develop art education program", nextScene: 'final_4d' }
+      ]
     },
-
-    ending_emotion: {
-      text: "Your raw, emotive pieces move audiences, reminding the world that creativity's heart lies in human emotion. Critics hail your work as a timeless testament to authenticity.",
-      choices: [{ text: "Restart Game", nextScene: 'start' }]
+    over_45_3c: {
+      text: "The town becomes a traditional art hub, but tech investment decreases. How do you maintain momentum?",
+      choices: [
+        { text: "Organize a regional art festival", nextScene: 'final_4e' },
+        { text: "Start a cultural exchange program", nextScene: 'final_4f' }
+      ]
     },
-
-    ending_evolution: {
-      text: "Your futuristic, adaptive installations challenge perceptions, pushing the boundaries of creativity. You leave a legacy of innovation and redefined art.",
-      choices: [{ text: "Restart Game", nextScene: 'start' }]
+    over_45_3d: {
+      text: "The community forum reveals deep divisions about funding and creative direction. What's your solution?",
+      choices: [
+        { text: "Form a representative art council", nextScene: 'final_4g' },
+        { text: "Launch an open art competition", nextScene: 'final_4h' }
+      ]
+    },
+    over_45_3e: {
+      text: "The mural gains global recognition but locals feel disconnected. How do you bridge the gap?",
+      choices: [
+        { text: "Create an educational digital exhibit", nextScene: 'final_4i' },
+        { text: "Fund a blended local initiative", nextScene: 'final_4j' }
+      ]
+    },
+    over_45_3f: {
+      text: "Your blended art project unites diverse artists but faces funding challenges. What's your priority?",
+      choices: [
+        { text: "Focus on a smaller, balanced project", nextScene: 'final_4k' },
+        { text: "Emphasize digital to attract funding", nextScene: 'final_4l' }
+      ]
+    },
+    // Final Scenarios
+    final_4a: {
+      text: "Your chaotic, high-energy AI installation adapts to audience reactions in real-time, symbolizing the polarizing nature of innovation. 'A Town's Voice, Together' becomes a landmark achievement.",
+      choices: [{ text: "Start New Journey", nextScene: 'start' }]
+    },
+    final_4b: {
+      text: "Your hybrid gallery seamlessly intertwines human-crafted and AI-driven works, showcasing the power of collaboration. 'History in Every Stroke' becomes a beloved community space.",
+      choices: [{ text: "Start New Journey", nextScene: 'start' }]
+    },
+    final_4c: {
+      text: "Your carefully curated exhibit with clear AI labeling emphasizes transparency and trust, setting new standards for ethical art practices. 'Hands That Create' inspires future generations.",
+      choices: [{ text: "Start New Journey", nextScene: 'start' }]
+    },
+    final_4d: {
+      text: "Your bold, analog series highlighting imperfections makes a powerful statement about human creativity. 'Tomorrow's Artists' shapes young minds.",
+      choices: [{ text: "Start New Journey", nextScene: 'start' }]
+    },
+    final_4e: {
+      text: "Your interactive installation sparks global debate about authorship in the digital age. 'The Spirit of Creation' becomes a cultural touchstone.",
+      choices: [{ text: "Start New Journey", nextScene: 'start' }]
+    },
+    final_4f: {
+      text: "Your minimalist hybrid piece subtly blends AI and human techniques, leaving interpretation to the audience. 'United in Art' bridges generational gaps.",
+      choices: [{ text: "Start New Journey", nextScene: 'start' }]
+    },
+    final_4g: {
+      text: "Your raw, visceral exhibit emphasizing human touch and emotion becomes a manifesto for traditional art. 'Art for All, By All' unites the community.",
+      choices: [{ text: "Start New Journey", nextScene: 'start' }]
+    },
+    final_4h: {
+      text: "Your balanced installation shows how harmony can exist between human and AI creativity. 'The Art of Debate' becomes a cultural phenomenon.",
+      choices: [{ text: "Start New Journey", nextScene: 'start' }]
+    },
+    final_4i: {
+      text: "Your dynamic multimedia exhibit pairs traditional techniques with modern tools, bridging past and future. 'From Pixels to Paint' inspires new perspectives.",
+      choices: [{ text: "Start New Journey", nextScene: 'start' }]
+    },
+    final_4j: {
+      text: "Your theatrical, participatory exhibit creates a space where live performers and AI collaborate in real-time. 'Where Tradition Meets Technology' redefines public art.",
+      choices: [{ text: "Start New Journey", nextScene: 'start' }]
+    },
+    final_4k: {
+      text: "Your modest yet powerful installation proves that balance between digital and traditional art is possible. 'In Balance, Beauty' becomes a model for future projects.",
+      choices: [{ text: "Start New Journey", nextScene: 'start' }]
+    },
+    final_4l: {
+      text: "Your kaleidoscopic installation combines diverse art forms, showing how boundaries blur in collaboration. 'The Future in Focus' shapes the art world's evolution.",
+      choices: [{ text: "Start New Journey", nextScene: 'start' }]
     }
   };
 
+
+  // Merge the default scenes with the original scenes
+  const allScenes = { ...scenes };
+
   // Check if the scene exists, if not show an error message
   const getScene = (sceneName) => {
-    return scenes[sceneName] || { 
+    return allScenes[sceneName] || { 
       text: "Oops! Something went wrong. Please restart the game.",
       choices: [{ text: "Restart", nextScene: 'start' }]
     };
   };
-  
 
   const Scene = ({ scene }) => {
     const [sceneImage, setSceneImage] = useState('images/Blank/blank.jpeg'); // Default blank image
@@ -231,6 +322,7 @@ const AdventureGame = () => {
       </div>
     );
   };
+  
 
   return (
     <div className="adventure-game">
